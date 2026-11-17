@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Bliss | Dessert Boutique</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Fonts: Playfair Display & DM Sans -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Playfair+Display:ital,wght@0,500..700;1,500..700&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        bliss: {
+          pink: '#d98fa2',
+          dark: '#754653',
+          cream: '#fffaf5',
+          light: '#f9e8ec',
+          brown: '#59413f',
+          muted: '#927b78',
+          border: '#f0dce0'
+        }
+      },
+      fontFamily: {
+        sans: ['"DM Sans"', 'sans-serif'],
+        serif: ['"Playfair Display"', 'serif'],
+      }
+    }
+  }
+}
+</script>
+
+<style>
+  /* Subtle custom scrollbar & transitions */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #fffaf5;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d98fa2;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #754653;
+  }
+</style>
+</head>
+
+<body class="bg-bliss-cream text-bliss-brown font-sans antialiased selection:bg-bliss-pink selection:text-white">
+
+  <!-- Toast Notification Banner (Replaces native alert) -->
+  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-bliss-dark text-white px-5 py-3.5 rounded-2xl shadow-xl border border-bliss-pink/30 flex items-center gap-3 text-sm font-medium">
+      <span id="toastIcon" class="text-base">♡</span>
+      <span id="toastMessage">Added to your sweet bag!</span>
+    </div>
+  </div>
+
+  <!-- 1. TOP ANNOUNCEMENT BAR -->
+  <div class="bg-bliss-dark text-white text-center py-2.5 px-4 text-[11px] font-medium tracking-[2.5px] uppercase">
+    ✿ FREE SWEETNESS IN EVERY ORDER ✿
+  </div>
+
+  <!-- 1. STICKY NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-bliss-cream/95 backdrop-blur-md border-b border-bliss-border px-4 sm:px-8 lg:px-[7%] py-4 transition-all">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <a href="#home" class="font-serif text-2xl sm:text-[29px] font-bold text-bliss-dark tracking-tight">
+        Sweet <span class="text-bliss-pink">Bliss.</span> ♡
+      </a>
+
+      <nav class="order-3 md:order-2 w-full md:w-auto flex flex-wrap items-center justify-center gap-4 sm:gap-6 pt-2 md:pt-0 border-t md:border-t-0 border-bliss-border/60">
+        <a href="#home" class="text-bliss-brown hover:text-bliss-pink text-xs sm:text-[13px] font-semibold transition-colors">Home</a>
+        <a href="#menu" class="text-bliss-brown hover:text-bliss-pink text-xs sm:text-[13px] font-semibold transition-colors">Shop</a>
+        <a href="#about" class="text-bliss-brown hover:text-bliss-pink text-xs sm:text-[13px] font-semibold transition-colors">Our Story</a>
+        <a href="#store" class="text-bliss-brown hover:text-bliss-pink text-xs sm:text-[13px] font-semibold transition-colors">Store Info</a>
+        <a href="#contact" class="text-bliss-brown hover:text-bliss-pink text-xs sm:text-[13px] font-semibold transition-colors">Contact</a>
+      </nav>
+
+      <a href="#cart" class="order-2 md:order-3 bg-bliss-light hover:bg-bliss-pink hover:text-white text-bliss-dark rounded-full px-5 py-2.5 text-xs sm:text-[13px] font-bold transition-all shadow-sm flex items-center gap-2">
+        <span>🛍 Cart</span>
+        <span class="bg-bliss-dark text-white text-[11px] px-2 py-0.5 rounded-full" id="cartCount">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- 2. FULL-WIDTH HERO SECTION -->
+  <section id="home" class="relative min-h-[530px] flex items-center px-6 sm:px-12 lg:px-[9%] py-20 text-white bg-cover bg-center"
+    style="background-image: linear-gradient(90deg, rgba(68, 43, 43, 0.82) 0%, rgba(68, 43, 43, 0.25) 100%), url('https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1600&q=80');">
+    <div class="max-w-xl">
+      <div class="text-[11px] font-semibold tracking-[4px] uppercase text-bliss-light mb-4">
+        WELCOME TO SWEET BLISS
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-[64px] font-bold leading-[1.1] mb-5">
+        Your little corner of sweetness.
+      </h1>
+      <p class="text-sm sm:text-[15px] leading-relaxed sm:leading-[1.9] text-white/90 mb-8">
+        Freshly baked cakes, delightful pastries, and dreamy desserts made with love. Find your new favorite treat today!
+      </p>
+      <a href="#menu" class="inline-block px-7 py-3.5 rounded-full bg-bliss-pink hover:bg-bliss-dark text-white font-bold text-xs tracking-wider uppercase transition-all duration-300 hover:-translate-y-1 shadow-lg">
+        SHOP NOW →
+      </a>
+    </div>
+  </section>
+
+  <!-- 3. STORE BENEFITS STRIP -->
+  <div class="bg-white border-b border-[#f2e5e5] px-4 sm:px-8 lg:px-[7%] py-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+      <div class="p-2">
+        <h3 class="font-serif text-base font-bold text-bliss-dark mb-1">♡ Freshly Made</h3>
+        <p class="text-xs text-[#987e7e]">Prepared with love every day</p>
+      </div>
+      <div class="p-2 sm:border-x border-bliss-border/60">
+        <h3 class="font-serif text-base font-bold text-bliss-dark mb-1">♡ Quality Ingredients</h3>
+        <p class="text-xs text-[#987e7e]">Only sweet and delicious treats</p>
+      </div>
+      <div class="p-2">
+        <h3 class="font-serif text-base font-bold text-bliss-dark mb-1">♡ Easy Ordering</h3>
+        <p class="text-xs text-[#987e7e]">Choose delivery or pickup</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 & 5. INTERACTIVE SHOP SECTION -->
+  <section id="menu" class="px-4 sm:px-8 lg:px-[7%] py-16 sm:py-20 max-w-7xl mx-auto">
+    <div class="text-center mb-10">
+      <small class="text-bliss-pink font-semibold tracking-[4px] text-[11px] uppercase block">THE SWEET BLISS SHOP</small>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-bliss-brown my-3">Shop Our Desserts</h2>
+      <p class="text-xs sm:text-sm text-[#987e7e]">Choose your favorite treats and add them to your bag.</p>
+    </div>
+
+    <!-- Live Search Input -->
+    <div class="max-w-lg mx-auto mb-8">
+      <div class="relative">
+        <input
+          type="text"
+          id="search"
+          placeholder="🔍 Search cakes, cookies, donuts, ice cream..."
+          oninput="displayProducts()"
+          class="w-full px-5 py-3.5 rounded-full border border-[#eacbd3] bg-white text-sm text-bliss-brown placeholder:text-bliss-muted/70 focus:outline-none focus:border-bliss-pink focus:ring-2 focus:ring-bliss-pink/20 transition-all shadow-sm"
+        >
+        <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-4 top-1/2 -translate-y-1/2 text-xs text-bliss-muted hover:text-bliss-dark font-semibold">
+          Clear
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Filter Pills -->
+    <div class="flex flex-wrap justify-center gap-2.5 sm:gap-3 mb-10" id="categoryButtons">
+      <button class="category active px-5 py-2.5 rounded-full border border-[#eacbd3] bg-bliss-dark text-white text-xs font-semibold transition-all" onclick="setCategory('All', this)">All Items</button>
+      <button class="category px-5 py-2.5 rounded-full border border-[#eacbd3] bg-white text-bliss-dark hover:bg-bliss-dark hover:text-white text-xs font-semibold transition-all" onclick="setCategory('Cakes', this)">Cakes</button>
+      <button class="category px-5 py-2.5 rounded-full border border-[#eacbd3] bg-white text-bliss-dark hover:bg-bliss-dark hover:text-white text-xs font-semibold transition-all" onclick="setCategory('Cupcakes', this)">Cupcakes</button>
+      <button class="category px-5 py-2.5 rounded-full border border-[#eacbd3] bg-white text-bliss-dark hover:bg-bliss-dark hover:text-white text-xs font-semibold transition-all" onclick="setCategory('Pastries', this)">Pastries</button>
+      <button class="category px-5 py-2.5 rounded-full border border-[#eacbd3] bg-white text-bliss-dark hover:bg-bliss-dark hover:text-white text-xs font-semibold transition-all" onclick="setCategory('Cookies', this)">Cookies</button>
+      <button class="category px-5 py-2.5 rounded-full border border-[#eacbd3] bg-white text-bliss-dark hover:bg-bliss-dark hover:text-white text-xs font-semibold transition-all" onclick="setCategory('Ice Cream', this)">Ice Cream</button>
+      <button class="category px-5 py-2.5 rounded-full border border-[#eacbd3] bg-white text-bliss-dark hover:bg-bliss-dark hover:text-white text-xs font-semibold transition-all" onclick="setCategory('Others', this)">Others</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="products" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
+      <!-- Populated dynamically via JS -->
+    </div>
+  </section>
+
+  <!-- 6A. SPECIAL OFFER FEATURE BANNER -->
+  <section class="mx-4 sm:mx-8 lg:mx-[7%] mb-16">
+    <div class="max-w-7xl mx-auto min-h-[300px] rounded-2xl p-8 sm:p-12 lg:px-16 flex items-center text-white bg-cover bg-center shadow-md"
+      style="background-image: linear-gradient(90deg, rgba(85, 52, 50, 0.88) 0%, rgba(85, 52, 50, 0.2) 100%), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=80');">
+      <div class="max-w-lg">
+        <div class="text-[11px] font-semibold tracking-[4px] uppercase text-bliss-light mb-3">SOMETHING SPECIAL</div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-3">Sweet Moments Start Here.</h2>
+        <p class="text-xs sm:text-sm text-white/90 mb-6">Make every little celebration extra delicious.</p>
+        <a href="#menu" class="inline-block px-7 py-3.5 rounded-full bg-bliss-pink hover:bg-bliss-dark text-white font-bold text-xs tracking-wider uppercase transition-all">
+          EXPLORE TREATS →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6B. OUR STORY SECTION -->
+  <section id="about" class="bg-bliss-light px-6 sm:px-12 py-20 text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-[11px] font-semibold tracking-[4px] uppercase text-[#ad6579] mb-3">OUR STORY</div>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-bliss-brown mb-5">Welcome to Our Sweet Little Shop</h2>
+      <p class="text-sm leading-[2] text-[#806c6c]">
+        Sweet Bliss is a dessert boutique made for people who love beautiful and delicious sweets. From our freshly baked cakes to our delightful pastries, every dessert is prepared with care. We want every customer to experience a little happiness in every bite. Thank you for visiting our sweet little corner!
+      </p>
+    </div>
+  </section>
+
+  <!-- 6C. STORE INFORMATION SECTION -->
+  <section id="store" class="px-4 sm:px-8 lg:px-[7%] py-20 text-center max-w-6xl mx-auto">
+    <div class="mb-10">
+      <small class="text-bliss-pink font-semibold tracking-[4px] text-[11px] uppercase block">VISIT OUR SHOP</small>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-bliss-brown my-3">Our Store Information</h2>
+      <p class="text-xs sm:text-sm text-[#987e7e]">We can't wait to serve you!</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-8 rounded-2xl border border-[#f0e4e2] shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-3xl mb-4">📍</div>
+        <h3 class="font-serif text-lg font-bold text-bliss-dark mb-2">Our Location</h3>
+        <p class="text-xs text-bliss-muted leading-relaxed">Quezon City, Philippines<br>Sweet Bliss Dessert Boutique</p>
+      </div>
+
+      <div class="bg-white p-8 rounded-2xl border border-[#f0e4e2] shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-3xl mb-4">🕒</div>
+        <h3 class="font-serif text-lg font-bold text-bliss-dark mb-2">Opening Hours</h3>
+        <p class="text-xs text-bliss-muted leading-relaxed">Monday - Saturday<br>9:00 AM - 8:00 PM<br>Sunday: 10:00 AM - 6:00 PM</p>
+      </div>
+
+      <div class="bg-white p-8 rounded-2xl border border-[#f0e4e2] shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-3xl mb-4">📞</div>
+        <h3 class="font-serif text-lg font-bold text-bliss-dark mb-2">Contact Details</h3>
+        <p class="text-xs text-bliss-muted leading-relaxed">0912-345-6789<br>sweetbliss@email.com<br>@sweetbliss</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6D. CUSTOMER REVIEWS SECTION -->
+  <section class="px-4 sm:px-8 lg:px-[7%] pb-20 text-center max-w-6xl mx-auto">
+    <div class="mb-10">
+      <small class="text-bliss-pink font-semibold tracking-[4px] text-[11px] uppercase block">LOVE FROM OUR CUSTOMERS</small>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-bliss-brown my-3">Sweet Reviews ♡</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-7 rounded-2xl border border-[#f0e4e2] shadow-sm">
+        <div class="text-[#d6a05e] text-sm tracking-widest mb-3">★★★★★</div>
+        <p class="text-xs sm:text-[13px] text-bliss-muted leading-relaxed italic">"The strawberry cake is so delicious! I love the taste and the beautiful presentation."</p>
+        <h3 class="font-serif font-bold text-bliss-dark mt-4 text-base">Mia R.</h3>
+      </div>
+
+      <div class="bg-white p-7 rounded-2xl border border-[#f0e4e2] shadow-sm">
+        <div class="text-[#d6a05e] text-sm tracking-widest mb-3">★★★★★</div>
+        <p class="text-xs sm:text-[13px] text-bliss-muted leading-relaxed italic">"Such a cute dessert shop! Everything looks amazing and tastes even better."</p>
+        <h3 class="font-serif font-bold text-bliss-dark mt-4 text-base">Angela C.</h3>
+      </div>
+
+      <div class="bg-white p-7 rounded-2xl border border-[#f0e4e2] shadow-sm">
+        <div class="text-[#d6a05e] text-sm tracking-widest mb-3">★★★★★</div>
+        <p class="text-xs sm:text-[13px] text-bliss-muted leading-relaxed italic">"My favorite place for sweet treats. I will definitely order again!"</p>
+        <h3 class="font-serif font-bold text-bliss-dark mt-4 text-base">Sophia M.</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. INTERACTIVE SHOPPING CART & CHECKOUT SECTION -->
+  <section id="cart" class="bg-bliss-light px-4 sm:px-8 py-20">
+    <div class="max-w-3xl mx-auto bg-white rounded-2xl p-6 sm:p-10 shadow-sm border border-bliss-border">
+      <div class="text-bliss-pink text-[11px] font-semibold tracking-[3px] uppercase">
+        YOUR SHOPPING BAG
+      </div>
+      <h2 class="font-serif text-3xl font-bold text-bliss-brown mt-2 mb-6">My Cart 🛍</h2>
+
+      <!-- Cart Items List -->
+      <div id="cartItems" class="divide-y divide-[#f0e4e2] text-sm">
+        <!-- Populated dynamically -->
+      </div>
+
+      <!-- Cart Total & Checkout Trigger -->
+      <div id="cartFooter" class="mt-6 pt-4 border-t border-bliss-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h3 id="total" class="font-serif text-2xl font-bold text-bliss-dark">Total: ₱0</h3>
+        <button onclick="openCheckout()" class="px-7 py-3.5 rounded-full bg-bliss-dark hover:bg-bliss-pink text-white font-bold text-xs tracking-wider uppercase transition-colors shadow-sm">
+          CONTINUE TO CHECKOUT →
+        </button>
+      </div>
+
+      <!-- Checkout Form Panel -->
+      <div id="checkoutPanel" class="hidden mt-8 p-6 sm:p-8 rounded-2xl border border-bliss-border bg-[#fffaf8]">
+        <h2 class="font-serif text-2xl font-bold text-bliss-dark mb-5">Complete Your Order ♡</h2>
+
+        <form id="orderForm" class="space-y-4">
+          <div>
+            <label for="customerName" class="block text-xs font-bold text-bliss-brown mb-1.5">Customer Name</label>
+            <input type="text" id="customerName" placeholder="Enter your full name" required
+              class="w-full p-3 rounded-xl border border-[#ead7da] bg-white text-sm focus:outline-none focus:border-bliss-pink">
+          </div>
+
+          <div>
+            <label for="phone" class="block text-xs font-bold text-bliss-brown mb-1.5">Phone Number</label>
+            <input type="tel" id="phone" placeholder="09XXXXXXXXX" required
+              class="w-full p-3 rounded-xl border border-[#ead7da] bg-white text-sm focus:outline-none focus:border-bliss-pink">
+          </div>
+
+          <div>
+            <label for="orderMethod" class="block text-xs font-bold text-bliss-brown mb-1.5">Order Method</label>
+            <select id="orderMethod" onchange="toggleAddress()"
+              class="w-full p-3 rounded-xl border border-[#ead7da] bg-white text-sm focus:outline-none focus:border-bliss-pink">
+              <option value="Delivery">Home Delivery</option>
+              <option value="Pickup">Store Pickup</option>
+            </select>
+          </div>
+
+          <div id="addressArea">
+            <label for="address" class="block text-xs font-bold text-bliss-brown mb-1.5">Delivery Address</label>
+            <textarea id="address" rows="3" placeholder="House number, street, barangay, city" required
+              class="w-full p-3 rounded-xl border border-[#ead7da] bg-white text-sm focus:outline-none focus:border-bliss-pink"></textarea>
+          </div>
+
+          <div>
+            <label for="payment" class="block text-xs font-bold text-bliss-brown mb-1.5">Payment Method</label>
+            <select id="payment"
+              class="w-full p-3 rounded-xl border border-[#ead7da] bg-white text-sm focus:outline-none focus:border-bliss-pink">
+              <option value="Cash on Delivery">Cash on Delivery</option>
+              <option value="Cash on Pickup">Cash on Pickup</option>
+              <option value="Pay at Store">Pay at Store</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="notes" class="block text-xs font-bold text-bliss-brown mb-1.5">Special Instructions (Optional)</label>
+            <textarea id="notes" rows="2" placeholder="Any special requests? (e.g., cake dedication, utensils)"
+              class="w-full p-3 rounded-xl border border-[#ead7da] bg-white text-sm focus:outline-none focus:border-bliss-pink"></textarea>
+          </div>
+
+          <button type="submit" class="w-full mt-2 py-4 rounded-full bg-bliss-dark hover:bg-bliss-pink text-white font-bold text-xs tracking-wider uppercase transition-colors shadow-md">
+            PLACE MY ORDER ♡
+          </button>
+        </form>
+      </div>
+
+      <!-- Order Confirmation Receipt -->
+      <div id="confirmation" class="hidden text-center py-8 px-2">
+        <div class="w-14 h-14 bg-bliss-light text-bliss-dark rounded-full flex items-center justify-center text-2xl mx-auto mb-4">♡</div>
+        <h2 class="font-serif text-3xl font-bold text-bliss-dark mb-2">Thank You! ♡</h2>
+        <p class="text-xs sm:text-sm text-bliss-muted mb-6">Your sweet order has been confirmed and is being prepared with love.</p>
+        <div id="orderSummary" class="max-w-md mx-auto text-left bg-[#fffaf8] border border-bliss-border rounded-2xl p-6 text-xs sm:text-sm space-y-2 mb-6"></div>
+        <button onclick="newOrder()" class="px-7 py-3.5 rounded-full bg-bliss-pink hover:bg-bliss-dark text-white font-bold text-xs tracking-wider uppercase transition-colors">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. CONTACT SECTION -->
+  <section id="contact" class="bg-white px-6 py-20 text-center">
+    <div class="max-w-xl mx-auto">
+      <div class="text-[11px] font-semibold tracking-[4px] uppercase text-bliss-pink mb-3">GET IN TOUCH</div>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-bliss-brown mb-5">Let's Make Life Sweeter!</h2>
+      <div class="space-y-1.5 text-xs sm:text-sm text-bliss-muted">
+        <p>Email: sweetbliss@email.com</p>
+        <p>Phone: 0912-345-6789</p>
+        <p>Instagram: @sweetbliss</p>
+        <p>Location: Quezon City, Philippines</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FOOTER -->
+  <footer class="bg-bliss-dark text-white text-center px-6 py-12">
+    <h2 class="font-serif text-3xl font-bold mb-3">Sweet Bliss ♡</h2>
+    <p class="text-xs text-[#f3dfe3] leading-relaxed">Your little corner of sweetness.</p>
+    <p class="text-xs text-[#f3dfe3] leading-relaxed mb-6">Made with love, baked with happiness.</p>
+    <p class="text-[11px] text-[#f3dfe3]/80">© 2026 Sweet Bliss Dessert Boutique. All Rights Reserved.</p>
+  </footer>
+
+<script>
+/* ==========================================================================
+   PRODUCT DATABASE — 32 DISTINCT, VERIFIED HIGH-RES UNSPLASH DESSERT PHOTOS
+   ========================================================================== */
+const desserts = [
+  ["Chocolate Cake", 180, "Cakes", "Chocolate cake with rich creamy frosting.", "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80"],
+  ["Strawberry Cupcake", 85, "Cupcakes", "Soft cupcake with strawberry frosting.", "https://images.unsplash.com/photo-1587668178277-295251f900ce?auto=format&fit=crop&w=600&q=80"],
+  ["Glazed Donuts", 65, "Pastries", "Fresh donuts with sweet glaze.", "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80"],
+  ["Ice Cream", 100, "Ice Cream", "Creamy and refreshing ice cream.", "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=80"],
+  ["Red Velvet Cake", 200, "Cakes", "Classic red velvet with cream cheese frosting.", "https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?auto=format&fit=crop&w=600&q=80"],
+  ["Chocolate Cookies", 55, "Cookies", "Crunchy cookies with chocolate chips.", "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80"],
+  ["French Toast", 120, "Pastries", "Golden toast with sweet toppings.", "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=600&q=80"],
+  ["Waffles", 130, "Pastries", "Golden waffles with delicious toppings.", "https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=600&q=80"],
+  ["Macarons", 90, "Cookies", "Colorful French macarons.", "https://images.unsplash.com/photo-1569864358642-9d1684040f43?auto=format&fit=crop&w=600&q=80"],
+  ["Vanilla Cupcakes", 75, "Cupcakes", "Classic vanilla cupcake.", "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=600&q=80"],
+  ["Cheesecake", 160, "Cakes", "Smooth and creamy cheesecake.", "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80"],
+  ["Brownies", 70, "Cookies", "Rich and fudgy chocolate brownies.", "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80"],
+  ["Strawberry Shortcake", 190, "Cakes", "Soft cake layered with strawberries.", "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80"],
+  ["Fudge Brownies", 85, "Cookies", "Extra chocolatey fudge brownies.", "https://images.unsplash.com/photo-1515037893149-de7f840978e2?auto=format&fit=crop&w=600&q=80"],
+  ["Chocolate Ice Cream", 90, "Ice Cream", "Rich chocolate ice cream.", "https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=600&q=80"],
+  ["Blueberry Muffin", 75, "Pastries", "Fresh blueberry muffin.", "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80"],
+  ["Chocolate Truffles", 120, "Cookies", "Delicate chocolate truffles.", "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=600&q=80"],
+  ["Strawberry Ice Cream", 95, "Ice Cream", "Sweet strawberry ice cream.", "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=600&q=80"],
+  ["Honey Pancakes", 140, "Pastries", "Fluffy pancakes with honey.", "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=600&q=80"],
+  ["Chocolate Donuts", 70, "Pastries", "Chocolate-covered fluffy donuts.", "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80"],
+  ["Strawberry Parfait", 150, "Others", "Creamy parfait with strawberries.", "https://images.unsplash.com/photo-1488900128323-21503983a07e?auto=format&fit=crop&w=600&q=80"],
+  ["Mini Cupcakes", 100, "Cupcakes", "A cute collection of mini cupcakes.", "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=600&q=80"],
+  ["Chocolate Eclairs", 110, "Pastries", "French pastry filled with cream.", "https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&w=600&q=80"],
+  ["Croissants", 80, "Pastries", "Buttery and flaky croissants.", "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80"],
+  ["Cinnamon Rolls", 95, "Pastries", "Soft rolls with cinnamon icing.", "https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=600&q=80"],
+  ["Caramel Pudding", 65, "Others", "Smooth pudding with caramel.", "https://images.unsplash.com/photo-1551879400-111a9087cd86?auto=format&fit=crop&w=600&q=80"],
+  ["Strawberry Cheesecake", 175, "Cakes", "Cheesecake topped with strawberries.", "https://images.unsplash.com/photo-1524351199678-941a58a3df50?auto=format&fit=crop&w=600&q=80"],
+  ["Apple Pie", 130, "Pastries", "Classic apple pie with sweet filling.", "https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?auto=format&fit=crop&w=600&q=80"],
+  ["Chocolate Fudge Cake", 220, "Cakes", "Rich chocolate fudge cake.", "https://images.unsplash.com/photo-1605807646983-377bc5a76493?auto=format&fit=crop&w=600&q=80"],
+  ["Fruit Tart", 145, "Pastries", "Fresh fruit with creamy filling.", "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=600&q=80"],
+  ["Chocolate Mousse", 125, "Others", "Light and creamy chocolate mousse.", "https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?auto=format&fit=crop&w=600&q=80"],
+  ["Milkshake", 110, "Others", "Cold and creamy milkshake.", "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80"]
+];
+
+let cart = [];
+let selectedCategory = "All";
+let toastTimeout = null;
+
+/* ==========================================================================
+   TOAST NOTIFICATION (Non-blocking UI alert replacement)
+   ========================================================================== */
+function showToast(message, icon = "♡") {
+  const banner = document.getElementById("toastBanner");
+  document.getElementById("toastMessage").textContent = message;
+  document.getElementById("toastIcon").textContent = icon;
+
+  banner.classList.remove("translate-y-24", "opacity-0");
+  banner.classList.add("translate-y-0", "opacity-100");
+
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => {
+    banner.classList.remove("translate-y-0", "opacity-100");
+    banner.classList.add("translate-y-24", "opacity-0");
+  }, 2600);
+}
+
+/* ==========================================================================
+   DISPLAY & FILTER PRODUCTS
+   ========================================================================== */
+function displayProducts() {
+  const container = document.getElementById("products");
+  const searchInput = document.getElementById("search");
+  const clearBtn = document.getElementById("clearSearchBtn");
+  const search = searchInput.value.trim().toLowerCase();
+
+  if (search.length > 0) {
+    clearBtn.classList.remove("hidden");
+  } else {
+    clearBtn.classList.add("hidden");
+  }
+
+  container.innerHTML = "";
+
+  const filtered = desserts
+    .map((item, index) => ({ item, index }))
+    .filter(({ item }) => {
+      const matchesCategory = selectedCategory === "All" || item[2] === selectedCategory;
+      const matchesSearch =
+        item[0].toLowerCase().includes(search) ||
+        item[3].toLowerCase().includes(search) ||
+        item[2].toLowerCase().includes(search);
+      return matchesCategory && matchesSearch;
+    });
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-[#f0e4e2]">
+        <p class="text-sm text-bliss-muted mb-3">No desserts found matching "${searchInput.value}". Try another sweet treat! ♡</p>
+        <button onclick="resetFilters()" class="px-5 py-2 rounded-full bg-bliss-light text-bliss-dark text-xs font-bold hover:bg-bliss-dark hover:text-white transition-colors">
+          Show All Desserts
+        </button>
+      </div>
+    `;
+    return;
+  }
+
+  filtered.forEach(({ item, index }) => {
+    const fallbackUrl = `https://placehold.co/600x400/f9e8ec/754653?text=${encodeURIComponent(item[0])}`;
+    container.innerHTML += `
+      <div class="group bg-white border border-[#f0e4e2] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-bliss-dark/10 flex flex-col">
+        <div class="h-48 sm:h-52 relative overflow-hidden bg-bliss-light">
+          <img
+            src="${item[4]}"
+            alt="${item[0]}"
+            loading="lazy"
+            onerror="this.onerror=null;this.src='${fallbackUrl}';"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          >
+          <span class="absolute top-3 left-3 bg-bliss-cream/95 backdrop-blur-xs text-bliss-dark px-3 py-1 rounded-full text-[10px] font-bold tracking-wide shadow-xs">
+            ${item[2]}
+          </span>
+        </div>
+
+        <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif text-lg font-bold text-bliss-brown mb-1.5">${item[0]}</h3>
+            <p class="text-xs text-[#a18b89] leading-relaxed min-h-[36px]">${item[3]}</p>
+          </div>
+
+          <div class="flex items-center justify-between mt-4 pt-3 border-t border-bliss-border/50">
+            <span class="text-base sm:text-lg font-bold text-bliss-dark">₱${item[1]}</span>
+            <button
+              onclick="addToCart(${index})"
+              class="bg-bliss-light hover:bg-bliss-dark text-bliss-dark hover:text-white px-4 py-2 rounded-full text-[11px] font-bold tracking-wide transition-colors active:scale-95"
+            >
+              + ADD TO BAG
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function setCategory(category, button) {
+  selectedCategory = category;
+
+  document.querySelectorAll(".category").forEach(btn => {
+    btn.classList.remove("active", "bg-bliss-dark", "text-white");
+    btn.classList.add("bg-white", "text-bliss-dark");
+  });
+
+  button.classList.remove("bg-white", "text-bliss-dark");
+  button.classList.add("active", "bg-bliss-dark", "text-white");
+
+  displayProducts();
+}
+
+function clearSearch() {
+  document.getElementById("search").value = "";
+  displayProducts();
+}
+
+function resetFilters() {
+  document.getElementById("search").value = "";
+  const allBtn = document.querySelector(".category");
+  setCategory("All", allBtn);
+}
+
+/* ==========================================================================
+   SHOPPING CART MANAGEMENT
+   ========================================================================== */
+function addToCart(index) {
+  const product = desserts[index];
+  const existing = cart.find(item => item.name === product[0]);
+
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({
+      name: product[0],
+      price: product[1],
+      image: product[4],
+      quantity: 1
+    });
+  }
+
+  updateCart();
+  showToast(`Added ${product[0]} to your bag!`, "🛍");
+}
+
+function updateCart() {
+  const container = document.getElementById("cartItems");
+  let total = 0;
+  let count = 0;
+
+  container.innerHTML = "";
+
+  if (cart.length === 0) {
+    container.innerHTML = `
+      <div class="py-8 text-center text-bliss-muted text-sm">
+        Your cart is empty. Add your favorite desserts above! ♡
+      </div>
+    `;
+  }
+
+  cart.forEach((item, index) => {
+    total += item.price * item.quantity;
+    count += item.quantity;
+
+    container.innerHTML += `
+      <div class="py-4 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3 min-w-[180px] flex-1">
+          <img src="${item.image}" alt="${item.name}"
+            onerror="this.onerror=null;this.src='https://placehold.co/100x100/f9e8ec/754653?text=Sweet';"
+            class="w-12 h-12 rounded-xl object-cover border border-bliss-border shrink-0">
+          <div>
+            <strong class="text-bliss-brown block text-sm">${item.name}</strong>
+            <span class="text-xs text-bliss-muted">₱${item.price} each</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 bg-bliss-cream px-2 py-1 rounded-full border border-bliss-border">
+          <button onclick="changeQuantity(${index}, -1)" aria-label="Decrease quantity"
+            class="w-7 h-7 rounded-full bg-bliss-light hover:bg-bliss-dark text-bliss-dark hover:text-white font-bold text-xs transition-colors">−</button>
+          <span class="w-6 text-center font-bold text-xs">${item.quantity}</span>
+          <button onclick="changeQuantity(${index}, 1)" aria-label="Increase quantity"
+            class="w-7 h-7 rounded-full bg-bliss-light hover:bg-bliss-dark text-bliss-dark hover:text-white font-bold text-xs transition-colors">+</button>
+        </div>
+
+        <div class="flex items-center gap-3 ml-auto sm:ml-0">
+          <strong class="text-bliss-dark text-sm w-16 text-right">₱${(item.price * item.quantity).toLocaleString("en-PH")}</strong>
+          <button onclick="removeItem(${index})"
+            class="px-3 py-1.5 rounded-full bg-[#f8e1e5] hover:bg-bliss-dark text-bliss-dark hover:text-white text-[11px] font-semibold transition-colors">
+            Remove
+          </button>
+        </div>
+      </div>
+    `;
+  });
+
+  document.getElementById("total").innerText = "Total: ₱" + total.toLocaleString("en-PH");
+  document.getElementById("cartCount").innerText = count;
+}
+
+function changeQuantity(index, amount) {
+  cart[index].quantity += amount;
+  if (cart[index].quantity <= 0) {
+    removeItem(index);
+  } else {
+    updateCart();
+  }
+}
+
+function removeItem(index) {
+  const removedName = cart[index].name;
+  cart.splice(index, 1);
+  updateCart();
+  showToast(`Removed ${removedName} from bag.`, "✕");
+}
+
+/* ==========================================================================
+   CHECKOUT & ORDER SUBMISSION
+   ========================================================================== */
+function openCheckout() {
+  if (cart.length === 0) {
+    showToast("Your cart is empty! Please add desserts first.", "🍰");
+    document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
+    return;
+  }
+
+  document.getElementById("confirmation").classList.add("hidden");
+  const panel = document.getElementById("checkoutPanel");
+  panel.classList.remove("hidden");
+  panel.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function toggleAddress() {
+  const method = document.getElementById("orderMethod").value;
+  const area = document.getElementById("addressArea");
+  const address = document.getElementById("address");
+
+  if (method === "Pickup") {
+    area.classList.add("hidden");
+    address.required = false;
+  } else {
+    area.classList.remove("hidden");
+    address.required = true;
+  }
+}
+
+document.getElementById("orderForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  if (cart.length === 0) {
+    showToast("Your cart is empty.", "🍰");
+    return;
+  }
+
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const method = document.getElementById("orderMethod").value;
+  const address = document.getElementById("address").value.trim();
+  const payment = document.getElementById("payment").value;
+  const notes = document.getElementById("notes").value.trim();
+
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const summaryItemsHtml = cart
+    .map(
+      item =>
+        `<div class="flex justify-between py-1">
+          <span>${item.name} × ${item.quantity}</span>
+          <span class="font-semibold">₱${(item.price * item.quantity).toLocaleString("en-PH")}</span>
+        </div>`
+    )
+    .join("");
+
+  document.getElementById("orderSummary").innerHTML = `
+    <p><strong>Customer:</strong> ${name}</p>
+    <p><strong>Phone:</strong> ${phone}</p>
+    <p><strong>Order Method:</strong> ${method}</p>
+    ${method === "Delivery" ? `<p><strong>Address:</strong> ${address}</p>` : ""}
+    <p><strong>Payment:</strong> ${payment}</p>
+    ${notes ? `<p><strong>Notes:</strong> ${notes}</p>` : ""}
+    <hr class="my-3 border-bliss-border">
+    <div class="space-y-1 text-bliss-brown">${summaryItemsHtml}</div>
+    <hr class="my-3 border-bliss-border">
+    <div class="flex justify-between items-center pt-1">
+      <span class="font-bold text-bliss-dark">Total Paid</span>
+      <span class="font-serif text-xl font-bold text-bliss-dark">₱${total.toLocaleString("en-PH")}</span>
+    </div>
+  `;
+
+  document.getElementById("checkoutPanel").classList.add("hidden");
+  document.getElementById("confirmation").classList.remove("hidden");
+
+  cart = [];
+  updateCart();
+  showToast("Order placed successfully! Thank you ♡", "🎉");
+
+  document.getElementById("confirmation").scrollIntoView({ behavior: "smooth", block: "center" });
+});
+
+function newOrder() {
+  document.getElementById("confirmation").classList.add("hidden");
+  document.getElementById("orderForm").reset();
+  toggleAddress();
+  document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
+}
+
+/* Initialize App */
+displayProducts();
+updateCart();
+</script>
+
+</body>
+</html>
